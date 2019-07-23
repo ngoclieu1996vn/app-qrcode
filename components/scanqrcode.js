@@ -15,7 +15,7 @@ import {
   Linking,
   Alert,
 } from 'react-native';
-
+import { Container, Header, Content, Footer, FooterTab, Button, Icon } from 'native-base';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 
 export default class scanqrcode extends Component {
@@ -45,7 +45,10 @@ async  onSuccess(e) {
   render() {
    // alert(this.state.check);
     return (
-      <QRCodeScanner
+      <Container>
+        <Header style={{backgroundColor:'#FFF',  borderBottomWidth: 0,}}  />
+        <Content >
+        <QRCodeScanner
       fadeIn={false}
       reactivate={true}
       reactivateTimeout={3000}
@@ -55,12 +58,21 @@ async  onSuccess(e) {
           Phần mềm <Text style={styles.textBold}>điểm danh nhân viên</Text> trên smart phone bằng QR code.
         </Text>
       }
-    //   bottomContent={
-    //     // <TouchableOpacity style={styles.buttonTouchable}>
-    //     //   <Text style={styles.buttonText}>OK. Got it!</Text>
-    //     // </TouchableOpacity>
-    //   }
     />
+
+        </Content>
+        <Footer>
+        <FooterTab>
+          <Button onPress={()=> this.props.navigation.navigate('Tạo QR Code')} >
+            <Icon  type="FontAwesome" name="qrcode" />
+          </Button>
+          <Button active>
+            <Icon active name="camera" />
+          </Button>
+        </FooterTab>
+      </Footer>
+      </Container>
+      
     );
   }
 }

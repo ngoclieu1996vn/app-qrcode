@@ -10,7 +10,7 @@ import {
     Keyboard,
     TouchableWithoutFeedback
 } from 'react-native';
-
+import { Container, Header, Content, Footer, FooterTab, Button, Icon } from 'native-base';
 export default class createqrcode extends Component {
   state = {
     text: '',
@@ -19,7 +19,11 @@ export default class createqrcode extends Component {
 
   render() {
     return (
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+
+      <Container>
+      <Header style={{backgroundColor:'#FFF',  borderBottomWidth: 0,}} />
+      <Content >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
             <View style={styles.container}>
                 <View  style={{marginBottom:100}}>
                             <Text style={{fontSize:20}} >Tạo QR Code</Text>
@@ -39,6 +43,21 @@ export default class createqrcode extends Component {
                 </View>
       </View>
       </TouchableWithoutFeedback>
+      </Content>
+      <Footer>
+        <FooterTab>
+          <Button active>
+            <Icon active type="FontAwesome" name="qrcode" />
+          </Button>
+          <Button onPress={()=> this.props.navigation.navigate('Quét QR Code')}>
+            <Icon  name="camera" />
+          </Button>
+        </FooterTab>
+      </Footer>
+    </Container>
+
+
+        
     );
   };
 }
