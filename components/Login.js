@@ -20,7 +20,8 @@
     TouchableWithoutFeedback,
     Keyboard,
     Button,
-    ImageBackground
+    ImageBackground,
+    AsyncStorage
   } from 'react-native';
   // import propTypes from 'prop-types'
   // import { connect } from 'react-redux';
@@ -64,11 +65,12 @@
   
    async dang_nhap() {
     Keyboard.dismiss()
-    this.props.navigation.navigate('Tạo QR Code')
+    await AsyncStorage.setItem('token', 'this is token');
     }
     
     render() {
       let gobal = this;
+      console.log(this.props);
       return (
 
 
